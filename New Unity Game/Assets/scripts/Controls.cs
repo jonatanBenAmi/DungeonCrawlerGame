@@ -1,33 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controls : MonoBehaviour {
+[RequireComponent(typeof(CharacterController))]
 
+public class Controls : MonoBehaviour {
+	public float moveSpeed = 10; //used determine the move speed 10 instances per frame.
+	public Vector3 forwardDirection; // movedirection  return 3d coordinates
+	public Vector3 sideDirection2;
+	public CharacterController cc; //to declare our character
+	
 	// Use this for initialization
 	void Start () {
-	
+	cc = GetComponent<CharacterController>();
+		forwardDirection = Vector3.zero;
+		sideDirection2 = Vector3.zero;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
+		forwardDirection = Vector3.forward * Input.GetAxis ("Vertical"); //vertical is a string that defines the buttons, to move from "up and and"
+		forwardDirection = transform.TransformDirection(forwardDirection).normalized; //transform: keyword to tell we are using this gameobject, 
+	                                                                       //normalized returns a value of 1 or -1, depending of up, down, left or right
+		forwardDirection *= moveSpeed;
+		
+		sideDirection2 = Vector3.left * Input.GetAxis ("Horizontal");
+		sideDirection2 = transform.TransformDirection(sideDirection2).normalized;
+		sideDirection2 *=moveSpeed;
 		
 	
 		
-	if(Input.GetKeyDown(KeyCode.A)){ //if you press A
-			transform.position -= new Vector3(1.0f,0,0); //move to the left ( subtract in the x direction)
-		}
-		if(Input.GetKeyDown(KeyCode.D)){ //if you press d
-			transform.position += new Vector3(1.0f,0,0); //move to the right ( add to the x  direction)
-		}
-		if(Input.GetButtonDown("Jump")&& transform.position.y<1){ //if you press space
-			rigidbody.AddForce(new Vector3(0,400.0f,0)); // add force to the y direction
-		}
-		if(Input.GetKeyDown (KeyCode.S)){ // if you press S
-			transform.position -= new Vector3(0,0,1.0f); 
-		}
-	  if (Input.GetKeyDown (KeyCode.W)){  //if you press w
-			transform.position += new Vector3(0,0,1.0f); // set the ball scale to normal
-		}
+		
+		cc.Move (forwardDirection * Time.deltaTime);   // uses the CharacterController script, moving it in the moveDirection
+		 
+	                                               //Time.deltaTime gives a smooth transission 
+		
+		cc.Move (sideDirection2* Time.deltaTime);
+	
 	
 	}
 }
