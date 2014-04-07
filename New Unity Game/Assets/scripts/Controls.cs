@@ -9,9 +9,10 @@ public class Controls : MonoBehaviour {
 	public float jumpspeed = 10.0f;
 	public float fireRate = 0.05f;
 	private float nextFire = 0;
-	
+	public float depth = 10; //using for mouse look
 	public GameObject bullet;
 	public Transform shotSpawn;
+	public Transform target;
 		
 	
 	CharacterController cc;
@@ -20,6 +21,8 @@ public class Controls : MonoBehaviour {
      cc = GetComponent<CharacterController>(); //to declare our character
 		
 	}
+	
+	 
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,8 +34,6 @@ public class Controls : MonoBehaviour {
 		
 		//movement
 		
-		
-		
 		float forwardSpeed=Input.GetAxis ("Vertical")*moveMentSpeed; //taking input from the keyboard(up and down) and multiplying with speed
 		float sideSpeed= Input.GetAxis("Horizontal")*moveMentSpeed;
 		
@@ -42,23 +43,22 @@ public class Controls : MonoBehaviour {
 			verticalVelocity = jumpspeed;
 		}
 		
-		Vector3 speed = new Vector3(-sideSpeed, verticalVelocity,forwardSpeed);
+		Vector3 speed = new Vector3(sideSpeed, verticalVelocity,-forwardSpeed);
 		
 		speed = transform.rotation * speed;
 		
 		
-
-       
 		
 	
 		
 		
+  
 		
 		cc.Move (speed * Time.deltaTime);   // uses the CharacterController script, moving it in the moveDirection
 		 
 	                                               //Time.deltaTime gives a smooth transission 
 		
-		
+
 		
 
 		
