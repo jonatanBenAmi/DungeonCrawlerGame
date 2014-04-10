@@ -8,6 +8,10 @@ public class mover : MonoBehaviour {
 	void Start () {
 		rigidbody.velocity = transform.forward * speed;
 	}
+
+	void OnTriggerExit(Collider other) {
+		Destroy(other.gameObject);
+	}
 	
 	// Update is called once per frame
 	void Update () {
