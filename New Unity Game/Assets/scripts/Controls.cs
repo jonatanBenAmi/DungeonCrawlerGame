@@ -13,7 +13,7 @@ public class Controls : MonoBehaviour {
 	public GameObject bullet;
 	public Transform shotSpawn;
 	public Transform target;
-		
+	public AudioClip shotSound;
 	
 	CharacterController cc;
 	// Use this for initialization
@@ -27,6 +27,7 @@ public class Controls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			audio.PlayOneShot (shotSound);
 			nextFire = Time.time + fireRate;
 				Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
 		}
