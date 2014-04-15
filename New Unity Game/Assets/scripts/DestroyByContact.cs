@@ -4,7 +4,7 @@ using System.Collections;
 public class DestroyByContact : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
-		if(other.tag == "Boundary"){
+		if(other.tag == "terrainBoundery"){
 			return;  //ends execution of function and return control back to unities game loop
 		}
 		Destroy(other.gameObject); //this will destroy the bullet
