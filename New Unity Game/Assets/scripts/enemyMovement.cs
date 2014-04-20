@@ -7,6 +7,7 @@ public class enemyMovement : MonoBehaviour {
 	public int MoveSpeed = 4;
 	public int MinDist = 2;
 	public float Distance;
+
 	// Use this for initialization
 	void Start () {
 		myTransform = transform;
@@ -19,8 +20,7 @@ public class enemyMovement : MonoBehaviour {
 			transform.LookAt (Target);
 			if(Vector3.Distance (transform.position,Target.position) >=MinDist){
 				transform.position += transform.forward*MoveSpeed*Time.deltaTime;
+				}
 			}
 		}
-
-	}
 }
