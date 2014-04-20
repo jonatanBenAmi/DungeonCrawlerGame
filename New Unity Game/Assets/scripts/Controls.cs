@@ -14,12 +14,16 @@ public class Controls : MonoBehaviour {
 	public Transform shotSpawn;
 	public Transform target;
 	public AudioClip shotSound;
+	public int health; // mounght og lives(how many times you can be hit by the objects
+	public Texture heart; // variable that will store my Health icon
+
 	
 	CharacterController cc;
 	// Use this for initialization
 	void Start () {
      cc = GetComponent<CharacterController>(); //to declare our character
-		
+		health = 1;
+
 	}
 	
 	 
@@ -31,7 +35,9 @@ public class Controls : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 				Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
 		}
-		
+		if(health ==0){   // if my health is 0, then restart the game
+			Application.LoadLevel(0);
+		}
 		
 		//movement
 		
@@ -62,13 +68,33 @@ public class Controls : MonoBehaviour {
 
 		
 
-		
-	
+		//loosing health by enemy impact
+
+
+
 		
 	
 	
 	
 	}
+	void OnTriggerEnter(Collider other){  // detects collosion with different objects
+		
+		if(other.gameObject.tag =="Enemy"){ //all objects with the Enemy tag
+			health--;
+		} // will take one of you health values
+	}
+
+	//GUI on the SCREEN
+
+	void OnGUI(){ //function that instantiates what you wish to diskplay on the game screen.
+		if(health!=0){ // if the health is not zero
+			for (int i=0;i<health;i++){ //for loop used to print out 
+				int posx = 50+50*i; //variable 
+				GUI.DrawTexture(new Rect(posx,50,50,50),heart);
+			}
+			
+		} 
 	
+}
 }
 	
