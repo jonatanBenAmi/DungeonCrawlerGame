@@ -4,66 +4,75 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]  //makes sure that we have the character controller script
 
 public class Controls : MonoBehaviour {
+
 	public float moveMentSpeed = 10.0f; //used determine the move speed 10 instances per frame.
 	public float verticalVelocity = 0;
-	public float jumpspeed = 10.0f;
-	public float fireRate = 0.05f;
-	private float nextFire = 0;
-	public float depth = 10; //using for mouse look
+
+	private float fireRate;
+	private float boosterTime;
+	private float jumpspeed;
+	private float nextFire;
+
 	public GameObject bullet;
 	public Transform shotSpawn;
 	public Transform target;
+
 	public AudioClip shotSound;
+
 	public int health; // mounght og lives(how many times you can be hit by the objects
 	public Texture heart; // variable that will store my Health icon
 
 	
 	CharacterController cc;
-	// Use this for initialization
-	void Start () {
-     cc = GetComponent<CharacterController>(); //to declare our character
-		health = 1;
 
+
+	void Start () 
+	{
+		boosterTime = 0.0f;
+		health = 3;
+		fireRate = 1.0f;
+		nextFire = 0.0f;
+		jumpspeed = 6.0f;
+     	cc = GetComponent<CharacterController>(); //to declare our character
 	}
-	
-	 
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+
+	void Update () 
+	{
+		if (boosterTime != 0){
+			boosterTime -= Time.time;
+		}else {
+			fireRate = 0.2f;
+		}
+		if (Input.GetButton ("Fire1") && Time.time > nextFire) 
+		{
 			audio.PlayOneShot (shotSound);
 			nextFire = Time.time + fireRate;
-				Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
+			Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
 		}
 		if(health ==0){   // if my health is 0, then restart the game
 			Application.LoadLevel(0);
 		}
 		
 		//movement
-		
-		float forwardSpeed=Input.GetAxis ("Vertical")*moveMentSpeed; //taking input from the keyboard(up and down) and multiplying with speed
+		//taking input from the keyboard(up and down) and multiplying with speed
+		float forwardSpeed=Input.GetAxis ("Vertical")*moveMentSpeed; 
 		float sideSpeed= Input.GetAxis("Horizontal")*moveMentSpeed;
-		
+	
 		verticalVelocity += Physics.gravity.y * Time.deltaTime;
-		
+		if (verticalVelocity < -1){
+			verticalVelocity = -1;
+		}
+
 	    if(cc.isGrounded && Input.GetButtonDown("Jump")){
 			verticalVelocity = jumpspeed;
 		}
-		
+		// uses the CharacterController script, moving it in the moveDirection
+		// Time.deltaTime gives a smooth transission
 		Vector3 speed = new Vector3(sideSpeed, verticalVelocity,-forwardSpeed);
-		
 		speed = transform.rotation * speed;
-		
-		
-		
-	
-		
-		
-  
-		
-		cc.Move (speed * Time.deltaTime);   // uses the CharacterController script, moving it in the moveDirection
+		cc.Move (speed * Time.deltaTime);   
 		 
-	                                               //Time.deltaTime gives a smooth transission 
+	                                                
 		
 
 		
@@ -77,11 +86,19 @@ public class Controls : MonoBehaviour {
 	
 	
 	}
-	void OnTriggerEnter(Collider other){  // detects collosion with different objects
-		
-		if(other.gameObject.tag =="Enemy"){ //all objects with the Enemy tag
+	// detects collosion with different objects
+	void OnTriggerEnter(Collider other)
+	{  
+		// all objects with the Enemy tag
+		// will take one of you health values
+		if(other.gameObject.tag =="Enemy"){ 
 			health--;
-		} // will take one of you health values
+		}else if(other.gameObject.name == "firerateBooster") {
+			fireRate = 0.05f;
+			boosterTime = 100.0f;
+			Destroy(other.gameObject);
+		}
+
 	}
 
 	//GUI on the SCREEN
@@ -95,6 +112,6 @@ public class Controls : MonoBehaviour {
 			
 		} 
 	
-}
+	}
 }
 	
