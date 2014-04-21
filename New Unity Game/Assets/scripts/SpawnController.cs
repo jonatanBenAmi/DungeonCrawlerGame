@@ -30,7 +30,6 @@ public class SpawnController : MonoBehaviour
 			Instantiate(Skull, transform.position,transform.rotation);
 			maxEnemies ++;//as GameObject;
 		}
-		Debug.Log (spawnTimer);
 	}
 
 }

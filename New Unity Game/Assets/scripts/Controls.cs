@@ -8,10 +8,12 @@ public class Controls : MonoBehaviour {
 	public float moveMentSpeed = 10.0f; //used determine the move speed 10 instances per frame.
 	public float verticalVelocity = 0;
 
-	private float fireRate;
-	private float boosterTime;
 	private float jumpspeed;
 	private float nextFire;
+
+	private float fireRate;
+	private float boosterTime;
+	private int bulletsLeft;
 
 	public GameObject bullet;
 	public Transform shotSpawn;
@@ -22,15 +24,17 @@ public class Controls : MonoBehaviour {
 	public int health; // mounght og lives(how many times you can be hit by the objects
 	public Texture heart; // variable that will store my Health icon
 
-	
+	private float timer;
+
 	CharacterController cc;
 
 
 	void Start () 
 	{
+		bulletsLeft = 0;
 		boosterTime = 0.0f;
 		health = 3;
-		fireRate = 1.0f;
+		fireRate = 0.5f;
 		nextFire = 0.0f;
 		jumpspeed = 6.0f;
      	cc = GetComponent<CharacterController>(); //to declare our character
@@ -38,14 +42,15 @@ public class Controls : MonoBehaviour {
 
 	void Update () 
 	{
-		if (boosterTime != 0){
-			boosterTime -= Time.time;
+		if (boosterTime > 0){
+			boosterTime -= Time.deltaTime;
 		}else {
-			fireRate = 0.2f;
+			fireRate = 0.5f;
 		}
-		if (Input.GetButton ("Fire1") && Time.time > nextFire) 
+		if (Input.GetButton ("Fire1") && Time.time > nextFire && bulletsLeft > 0) 
 		{
 			audio.PlayOneShot (shotSound);
+			bulletsLeft--;
 			nextFire = Time.time + fireRate;
 			Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
 		}
@@ -73,7 +78,7 @@ public class Controls : MonoBehaviour {
 		cc.Move (speed * Time.deltaTime);   
 		 
 	                                                
-		
+		Debug.Log(fireRate + " " + boosterTime + " " + bulletsLeft);
 
 		
 
@@ -89,14 +94,32 @@ public class Controls : MonoBehaviour {
 	// detects collosion with different objects
 	void OnTriggerEnter(Collider other)
 	{  
+		GameObject collisionObject;
 		// all objects with the Enemy tag
 		// will take one of you health values
-		if(other.gameObject.tag =="Enemy"){ 
+		if(other.gameObject.tag =="Enemy")
+		{ 
 			health--;
-		}else if(other.gameObject.name == "firerateBooster") {
-			fireRate = 0.05f;
-			boosterTime = 100.0f;
-			Destroy(other.gameObject);
+		}
+		else if(other.gameObject.tag == "Ammo") 
+		{
+			collisionObject = other.gameObject;
+
+			ammoBoosterScript script = collisionObject.GetComponent<ammoBoosterScript>();
+
+			if(script.boosterType== "Health"){
+				health += script.healthIncrease;
+				Destroy(collisionObject);
+				Debug.Log(bulletsLeft);
+			}else if(script.boosterType == "Ammo"){
+				bulletsLeft += script.amountOfBullets;
+				Destroy(collisionObject);
+				Debug.Log(bulletsLeft);
+			}else if(script.boosterType == "Firerate"){
+				fireRate = script.increaseFirerate;
+				boosterTime = script.boosterTime;
+				Destroy(collisionObject);
+			}
 		}
 
 	}
