@@ -2,7 +2,15 @@ fileFormatVersion: 2
 guid: b36bce6106537354d808b92d4ef59306
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bullet: {fileID: 100002, guid: 4f836b3d14aa6f9408e3d2bde323c549, type: 2}
+  - grenade: {fileID: 100000, guid: 7282d21f3383fb849823c9d073080a0e, type: 2}
+  - shotSpawn: {instanceID: 0}
+  - grenadeSpawn: {instanceID: 0}
+  - target: {instanceID: 0}
+  - shotSound: {instanceID: 0}
+  - healthGui: {fileID: 2800000, guid: 6a6f6e34508ec3b42a7d6601df97c03d, type: 3}
+  - ammoGui: {fileID: 2800000, guid: 8a8d3a1ffa31391479b0537f9ea7429c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

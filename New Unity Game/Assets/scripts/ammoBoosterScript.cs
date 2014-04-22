@@ -5,6 +5,7 @@ public class ammoBoosterScript : MonoBehaviour {
 
 
 	public int amountOfBullets;
+	public int bulletChoise;
 
 	void Start()
 	{
@@ -18,7 +19,13 @@ public class ammoBoosterScript : MonoBehaviour {
 			collisionObject = other.gameObject;
 			
 			Controls script = collisionObject.GetComponent<Controls>();
-			script.bulletsLeft += amountOfBullets;
+			if(bulletChoise == 0){
+				script.bulletsLeft[bulletChoise] += amountOfBullets;
+			}
+			else if(bulletChoise == 1){
+				script.bulletsLeft[bulletChoise] += amountOfBullets;
+			}
+
 			Destroy(gameObject);
 			
 		}

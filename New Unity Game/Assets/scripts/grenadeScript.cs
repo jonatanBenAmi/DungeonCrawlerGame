@@ -5,14 +5,15 @@ public class grenadeScript : MonoBehaviour {
 
 	public int damage;
 	public float timeToDeto;
+	public float throwSpeed;
 
+	public AudioClip grenadeSound;
 	public GameObject exp;
 
 	void Start () 
 	{
-		timeToDeto = 1.0f + Time.time;
-		damage = 3;
-		rigidbody.velocity = transform.forward * 15;
+		timeToDeto = 3.0f + Time.time;
+		rigidbody.velocity = transform.forward * throwSpeed;
 	}
 	
 	// Update is called once per frame
@@ -23,6 +24,7 @@ public class grenadeScript : MonoBehaviour {
 		{
 			Instantiate(exp, transform.position, transform.rotation);
 			Destroy(gameObject);
+			AudioSource.PlayClipAtPoint(grenadeSound, transform.position);
 		}
 		else if(timeToDeto < Time.time)
 		{

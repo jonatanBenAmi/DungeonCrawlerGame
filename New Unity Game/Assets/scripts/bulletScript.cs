@@ -3,7 +3,7 @@ using System.Collections;
 
 public class bulletScript : MonoBehaviour {
 
-	public float speed = 20;
+	public float speed = 40;
 	// Use this for initialization
 	void Start () {
 		rigidbody.velocity = transform.forward * speed;

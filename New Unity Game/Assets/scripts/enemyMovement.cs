@@ -49,6 +49,7 @@ public class enemyMovement : MonoBehaviour {
 		if(Distance<30)
 		{
 			audio.volume = 0.3f;
+			audio.PlayOneShot(MonsterSound);
 			transform.LookAt (Target.transform);
 			transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 
@@ -74,6 +75,11 @@ public class enemyMovement : MonoBehaviour {
 			}else{
 				Destroy(other.gameObject); //this will destroy the bullet
 			}
+		}
+		if(other.tag == "Terrain"){
+			RandNum = Random.Range (0,360);
+			Vector3 randomDirection = new Vector3 (0, RandNum, 0);
+			transform.Rotate (randomDirection);
 		}
 	}
 

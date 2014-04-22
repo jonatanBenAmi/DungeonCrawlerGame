@@ -4,6 +4,7 @@ using System.Collections;
 public class grenadeBooster : MonoBehaviour {
 
 	public int amountOfGrenades;
+	public int grenadeChoise;
 
 	void Start () {
 		amountOfGrenades = 5;
@@ -16,7 +17,12 @@ public class grenadeBooster : MonoBehaviour {
 		{
 			collisionObject = other.gameObject;
 			Controls script = collisionObject.GetComponent<Controls>();
-			script.grenadesLeft += amountOfGrenades;
+			if(grenadeChoise == 0){
+				script.grenadesLeft[grenadeChoise] += amountOfGrenades;
+			}
+			else if(grenadeChoise == 1){
+				script.grenadesLeft[grenadeChoise] += amountOfGrenades;
+			}
 			Destroy(gameObject);
 		}
 	}
