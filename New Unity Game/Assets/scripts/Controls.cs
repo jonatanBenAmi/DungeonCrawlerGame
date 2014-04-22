@@ -28,11 +28,10 @@ public class Controls : MonoBehaviour {
 
 	public Transform shotSpawn;
 	public Transform grenadeSpawn;
-	//public Transform target;
-	public AudioClip shotSound;
 	
-	 // mounght og lives(how many times you can be hit by the objects
-	public Texture healthGui; // variable that will store my Health icon
+	public AudioClip shotSound;
+
+	public Texture healthGui; 
 	public Texture ammoGui; 
 	public Texture grenadeGui; 
 	public Texture powerGrenadeGui; 
@@ -45,8 +44,8 @@ public class Controls : MonoBehaviour {
 
 	void Start () 
 	{
-		bulletsLeft = new int[2]{0,0};
-		grenadesLeft = new int[2]{0,0};
+		bulletsLeft = new int[2]{120,0};
+		grenadesLeft = new int[2]{20,20};
 		bulletChoise = 0;
 		grenadeChoise = 1;
 		boosterTime = 0.0f;
@@ -55,11 +54,14 @@ public class Controls : MonoBehaviour {
 		throwRate = 2.0f;
 		nextFire = 0.0f;
 		jumpspeed = 6.0f;
+
+		
      	cc = GetComponent<CharacterController>(); //to declare our character
 	}
 
 	void Update () 
 	{
+		
 		if (boosterTime > 0){
 			boosterTime -= Time.deltaTime;
 		}else {

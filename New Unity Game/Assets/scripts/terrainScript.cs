@@ -15,8 +15,13 @@ public class terrainScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.tag == "Bullet"){
-			Debug.Log(this.gameObject + ": Other: " + other.gameObject.name);
 			Destroy(other.gameObject);
+		}else if(other.gameObject.tag == "Enemy"){
+			GameObject collisionObject;
+			collisionObject = other.gameObject;
+			enemyMovement script = collisionObject.GetComponent<enemyMovement>();
+			Vector3 randomDirection = new Vector3 (0, 150, 0);
+			other.transform.Rotate (randomDirection);
 		}
 	}
 }

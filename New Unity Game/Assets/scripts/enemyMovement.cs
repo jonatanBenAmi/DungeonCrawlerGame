@@ -31,8 +31,7 @@ public class enemyMovement : MonoBehaviour {
 		defence = 3;
 		myTransform = transform;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 		if(ticTime>0){
@@ -41,11 +40,14 @@ public class enemyMovement : MonoBehaviour {
 			ticTime = 500;
 		}
 
-		Distance = Vector3.Distance (myTransform.position,Target.transform.position);
-		if(defence < 0){
+
+		if(defence < 0)
+		{
 			Instantiate(exp, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
+
+		Distance = Vector3.Distance (myTransform.position,Target.transform.position);
 		if(Distance<30)
 		{
 			audio.volume = 0.3f;
@@ -60,8 +62,12 @@ public class enemyMovement : MonoBehaviour {
 				RandNum = Random.Range (0,360);
 				Vector3 randomDirection = new Vector3 (0, RandNum, 0);
 				transform.Rotate (randomDirection);
+			}else if(transform.position.y > 6){
+				Vector3 randomDirection = new Vector3 (0, 180, 0);
+				transform.Rotate (randomDirection);
 			}
 		}
+		//Debug.Log(transform.position.y);
 	}
 
 	
@@ -77,10 +83,23 @@ public class enemyMovement : MonoBehaviour {
 			}
 		}
 		if(other.tag == "Terrain"){
-			RandNum = Random.Range (0,360);
-			Vector3 randomDirection = new Vector3 (0, RandNum, 0);
+			Vector3 randomDirection = new Vector3 (0, 150, 0);
 			transform.Rotate (randomDirection);
+			Debug.Log(transform.position);
+		}else if(other.tag == "SpawnPoint"){
+			Vector3 randomDirection = new Vector3 (0, 150, 0);
+			transform.Rotate (randomDirection);
+			Debug.Log(transform.position);
+		}else if(other.tag == "Enemy"){
+			Vector3 randomDirection = new Vector3 (0, 150, 0);
+			transform.Rotate (randomDirection);
+			Debug.Log(transform.position);
+		}else if(other.tag == "Water"){
+			Vector3 randomDirection = new Vector3 (0, 150, 0);
+			transform.Rotate (randomDirection);
+			Debug.Log(transform.position);
 		}
+
 	}
 
 }
