@@ -17,6 +17,8 @@ public class enemyMovement : MonoBehaviour {
 	public float ticTime;
 	public float RandNum;
 
+	public int defence;
+
 	public AudioClip MonsterSound;
 
 	// Use this for initialization
@@ -26,11 +28,13 @@ public class enemyMovement : MonoBehaviour {
 		timeToTurn = 0.0f;
 		MinDist = 0;
 		ticTime = 500.0f;
+		defence = 3;
 		myTransform = transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(ticTime>0){
 			ticTime -= 1;
 		}else if(ticTime==0){
@@ -38,7 +42,10 @@ public class enemyMovement : MonoBehaviour {
 		}
 
 		Distance = Vector3.Distance (myTransform.position,Target.transform.position);
-
+		if(defence < 0){
+			Instantiate(exp, transform.position, transform.rotation);
+			Destroy (gameObject);
+		}
 		if(Distance<30)
 		{
 			audio.volume = 0.3f;
@@ -47,7 +54,7 @@ public class enemyMovement : MonoBehaviour {
 
 		}else{
 			audio.volume = 0f;
-			transform.position += transform.forward*1*Time.deltaTime;
+			transform.position += transform.forward*3*Time.deltaTime;
 			if(ticTime==500){
 				RandNum = Random.Range (0,360);
 				Vector3 randomDirection = new Vector3 (0, RandNum, 0);
@@ -59,10 +66,15 @@ public class enemyMovement : MonoBehaviour {
 	
 	public void OnTriggerEnter(Collider other) {
 		if(other.tag == "Bullet"){
-			Instantiate(exp, transform.position, transform.rotation);
-			Destroy(other.gameObject); //this will destroy the bullet
-			Destroy (gameObject); //this will destoy the enemy  //ends execution of function and return control back to unities game loop
+			defence--;
+			if(defence < 1){
+				Instantiate(exp, transform.position, transform.rotation);
+				Destroy(other.gameObject); //this will destroy the bullet
+				Destroy (gameObject);
+			}else{
+				Destroy(other.gameObject); //this will destroy the bullet
+			}
 		}
-		
 	}
+
 }

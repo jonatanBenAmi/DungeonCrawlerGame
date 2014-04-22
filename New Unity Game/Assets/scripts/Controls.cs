@@ -11,18 +11,25 @@ public class Controls : MonoBehaviour {
 	private float jumpspeed;
 	private float nextFire;
 
-	private float fireRate;
-	private float boosterTime;
-	private int bulletsLeft;
+	public float fireRate;
+	public float boosterTime;
+
+	public int health;
+	public int bulletsLeft;
+	public int grenadesLeft;
+
 
 	public GameObject bullet;
+	public GameObject grenade;
 	public Transform shotSpawn;
+	public Transform grenadeSpawn;
 	public Transform target;
-
 	public AudioClip shotSound;
+	
+	 // mounght og lives(how many times you can be hit by the objects
+	public Texture healthGui; // variable that will store my Health icon
+	public Texture ammoGui; 
 
-	public int health; // mounght og lives(how many times you can be hit by the objects
-	public Texture heart; // variable that will store my Health icon
 
 	private float timer;
 
@@ -31,7 +38,7 @@ public class Controls : MonoBehaviour {
 
 	void Start () 
 	{
-		bulletsLeft = 0;
+		bulletsLeft = 30;
 		boosterTime = 0.0f;
 		health = 3;
 		fireRate = 0.5f;
@@ -54,7 +61,13 @@ public class Controls : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			Instantiate(bullet, shotSpawn.position, shotSpawn.rotation); //as GameObject;
 		}
-		if(health ==0){   // if my health is 0, then restart the game
+		if (Input.GetButton ("Fire2") && Time.time > nextFire && grenadesLeft > 0) 
+		{
+			grenadesLeft--;
+			nextFire = Time.time + fireRate;
+			Instantiate(grenade, grenadeSpawn.position, grenadeSpawn.rotation); //as GameObject;
+		}
+		if(health < 0){   // if my health is 0, then restart the game
 			Application.LoadLevel(0);
 		}
 		
@@ -76,65 +89,35 @@ public class Controls : MonoBehaviour {
 		Vector3 speed = new Vector3(sideSpeed, verticalVelocity,-forwardSpeed);
 		speed = transform.rotation * speed;
 		cc.Move (speed * Time.deltaTime);   
-		 
-	                                                
-		Debug.Log(fireRate + " " + boosterTime + " " + bulletsLeft);
-
-		
-
-		//loosing health by enemy impact
 
 
-
-		
-	
-	
-	
 	}
 	// detects collosion with different objects
 	void OnTriggerEnter(Collider other)
-	{  
-		GameObject collisionObject;
-		// all objects with the Enemy tag
-		// will take one of you health values
+	{ 
 		if(other.gameObject.tag =="Enemy")
 		{ 
 			health--;
 		}
-		else if(other.gameObject.tag == "Ammo") 
-		{
-			collisionObject = other.gameObject;
-
-			ammoBoosterScript script = collisionObject.GetComponent<ammoBoosterScript>();
-
-			if(script.boosterType== "Health"){
-				health += script.healthIncrease;
-				Destroy(collisionObject);
-				Debug.Log(bulletsLeft);
-			}else if(script.boosterType == "Ammo"){
-				bulletsLeft += script.amountOfBullets;
-				Destroy(collisionObject);
-				Debug.Log(bulletsLeft);
-			}else if(script.boosterType == "Firerate"){
-				fireRate = script.increaseFirerate;
-				boosterTime = script.boosterTime;
-				Destroy(collisionObject);
-			}
-		}
-
 	}
+
 
 	//GUI on the SCREEN
 
 	void OnGUI(){ //function that instantiates what you wish to diskplay on the game screen.
 		if(health!=0){ // if the health is not zero
 			for (int i=0;i<health;i++){ //for loop used to print out 
-				int posx = 50+50*i; //variable 
-				GUI.DrawTexture(new Rect(posx,50,50,50),heart);
+				int posy = 50*i; //variable 
+				GUI.DrawTexture(new Rect(0,posy,50,50),healthGui);
 			}
-			
 		} 
-	
+		if(bulletsLeft > 30){ // if the health is not zero
+			int numOfmags = bulletsLeft/30;
+			for (int i=0;i<numOfmags;i++){ //for loop used to print out 
+				int posy = 25*i; //variable 
+				GUI.DrawTexture(new Rect(Screen.width - 50,posy,50,25),ammoGui);
+			}
+		} 
 	}
 }
 	

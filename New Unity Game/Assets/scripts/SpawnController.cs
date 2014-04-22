@@ -6,12 +6,10 @@ public class SpawnController : MonoBehaviour
 	
 
 	public GameObject Skull;
-	//GameObject enemySpawn2;
-	//GameObject enemySpawn3;
-	
+		
 	public float spawnTimer;
 	public float howFast;
-	public short maxEnemies;
+	public int maxEnemies;
 
 
 	void Start () 

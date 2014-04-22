@@ -3,22 +3,24 @@ using System.Collections;
 
 public class ammoBoosterScript : MonoBehaviour {
 
-	public string boosterType;
-
-	//ammo boosters
 
 	public int amountOfBullets;
 
-	public float increaseFirerate;
-	public float boosterTime;
-
-	//health boosters
-
-	public int healthIncrease;
-
-
 	void Start()
 	{
-		healthIncrease = 1;
+		amountOfBullets = 30;
+	}
+	void OnTriggerEnter(Collider other)
+	{  
+		GameObject collisionObject;
+		if(other.gameObject.name == "Avatar") 
+		{
+			collisionObject = other.gameObject;
+			
+			Controls script = collisionObject.GetComponent<Controls>();
+			script.bulletsLeft += amountOfBullets;
+			Destroy(gameObject);
+			
+		}
 	}
 }
