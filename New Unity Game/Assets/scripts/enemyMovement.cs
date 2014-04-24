@@ -2,33 +2,35 @@ using UnityEngine;
 using System.Collections;
 
 public class enemyMovement : MonoBehaviour {
-
-	GameObject Target;
-
+	
+	public Transform Target;
+	GameObject player;
 	public GameObject exp;
-
+	
 	public int MoveSpeed = 5;
 	public int MinDist;
 	public float timeToTurn;
-
+	
 	private Transform myTransform;
 	private float Distance;
-
+	private float Distance2;
+	
 	public float ticTime;
 	public float RandNum;
-
+	
 	public float defence;
 	public float attack;
 	public bool stuned;
 	private float defenceBeforeStun;
-
-
+	
+	
 	public AudioClip MonsterSound;
-
+	
 	// Use this for initialization
 	void Start () 
 	{
-		Target = GameObject.Find("Avatar");
+		player = GameObject.Find("Avatar");
+		Target = player.transform;
 		timeToTurn = 500.0f;
 		MinDist = 0;
 		ticTime = 0.0f;
@@ -36,9 +38,9 @@ public class enemyMovement : MonoBehaviour {
 		defenceBeforeStun = 0;
 		myTransform = transform;
 	}
-
+	
 	void Update () {
-
+		
 		if(ticTime < timeToTurn){
 			ticTime ++;
 		}else if(ticTime == timeToTurn ){
@@ -55,7 +57,9 @@ public class enemyMovement : MonoBehaviour {
 			Instantiate(exp, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}
-
+		
+		
+		
 		if(stuned == true)
 		{
 			transform.position = transform.position;
@@ -63,14 +67,13 @@ public class enemyMovement : MonoBehaviour {
 				defenceBeforeStun = defence;
 				defence = defence * 0.30f;
 			}
-		}
-		else{
-			Distance = Vector3.Distance (myTransform.position,Target.transform.position);
+		}else{
+			Distance = Vector3.Distance (myTransform.position,Target.position);
 			if(Distance < 30)
 			{
 				audio.volume = 0.3f;
 				audio.PlayOneShot(MonsterSound);
-				transform.LookAt (Target.transform);
+				transform.LookAt (Target);
 				transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 				
 			}else{
@@ -83,12 +86,13 @@ public class enemyMovement : MonoBehaviour {
 				}
 			}
 		}
+		
 		if(transform.position.y < 5|| transform.position.y > 6){
 			transform.position = new Vector3 (transform.position.x,  5.5f,transform.position.z);
 		}
-
+		
 	}
-
+	
 	
 	public void OnTriggerEnter(Collider other) 
 	{
@@ -111,7 +115,7 @@ public class enemyMovement : MonoBehaviour {
 			transform.Rotate (new Vector3 (0, 150, 0));
 		}
 	}
-
-
-
+	
+	
+	
 }
