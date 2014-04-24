@@ -13,24 +13,8 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: SkullStronghold
-  m_TagString: SpawnPoint
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400002}
-  - 114: {fileID: 11400002}
-  m_Layer: 0
-  m_Name: Spawn
-  m_TagString: SpawnPoint
+  m_Name: Ammo
+  m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,23 +25,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: .886222363, z: 0, w: .463260204}
-  m_LocalPosition: {x: 110.876816, y: 7.2557373, z: 79.2472229}
-  m_LocalScale: {x: 8.99632549, y: 5.51129103, z: 9.37338734}
-  m_Children:
-  - {fileID: 400002}
-  m_Father: {fileID: 0}
---- !u!4 &400002
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: .0040859119, z: 0, w: .999991715}
-  m_LocalPosition: {x: .889239192, y: -.292557508, z: .0267611481}
-  m_LocalScale: {x: .0471935123, y: .077036038, z: .045295082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 108.07151, y: 6.00009155, z: 78.9375}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
-  m_Father: {fileID: 400000}
+  m_Father: {fileID: 0}
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -70,7 +42,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 152b36ce64f514241b05ed7e7a7ddf55, type: 2}
+  - {fileID: 2100000, guid: 160580c5b2bf5e3479d44acec15a9205, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -93,7 +65,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -106,30 +78,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17590e955fd7f694b95f25a069990158, type: 3}
+  m_Script: {fileID: 11500000, guid: a904388f3d036cd4d9311a939c7af4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defence: 0
-  player: {fileID: 0}
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056843bb1b025fb4f92918af399e8dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy:
-  - {fileID: 100000, guid: a87c9af1a8997e34cb9e8a3b45ad48b8, type: 2}
-  - {fileID: 100004, guid: db8a21f0469a3044e8788fbb44ee8d6b, type: 2}
-  - {fileID: 100016, guid: a4914bd12bda9ee45a4ea9b3a803e013, type: 2}
-  spawnTimer: 0
-  howFast: 0
-  maxEnemies: 0
+  amountOfBullets: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

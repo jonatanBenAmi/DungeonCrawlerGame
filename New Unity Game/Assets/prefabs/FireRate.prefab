@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Booster 3
+  m_Name: FireRate
   m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.88916, y: 6.00009155, z: 98.0734177}
+  m_LocalPosition: {x: 62.0435982, y: 6.00009155, z: 52.9212418}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: a396956e258e1f04689daef6c3f218e7, type: 2}
+  - {fileID: 2100000, guid: bc39f2364197a8b49891c7b2c8f9181f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -78,10 +78,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfd52e1f7de590546867b26b35a24e22, type: 3}
+  m_Script: {fileID: 11500000, guid: 63addadad73144c43b420112d00c7af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfBullets: 
+  increaseFirerate: 0
+  boosterTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
