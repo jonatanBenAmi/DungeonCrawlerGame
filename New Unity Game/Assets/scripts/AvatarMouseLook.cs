@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 
 public class AvatarMouseLook : MonoBehaviour {
-	
+
 	void RotateToMouse() {
        Vector3 v3T = Input.mousePosition;  //vector that holds the mouse position in 3D space
        v3T.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);

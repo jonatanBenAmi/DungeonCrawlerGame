@@ -3,11 +3,10 @@ using System.Collections;
 
 public class grenadeBooster : MonoBehaviour {
 
-	public int amountOfGrenades;
-	public int grenadeChoise;
+	public int[] amountOfGrenades;
 
 	void Start () {
-		amountOfGrenades = 5;
+		amountOfGrenades = new int[5] {5,3,3,2,1};
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -17,11 +16,8 @@ public class grenadeBooster : MonoBehaviour {
 		{
 			collisionObject = other.gameObject;
 			Controls script = collisionObject.GetComponent<Controls>();
-			if(grenadeChoise == 0){
-				script.grenadesLeft[grenadeChoise] += amountOfGrenades;
-			}
-			else if(grenadeChoise == 1){
-				script.grenadesLeft[grenadeChoise] += amountOfGrenades;
+			for(int i = 0; i < 5 ; i ++){
+				script.grenadesLeft[i] += amountOfGrenades[i];
 			}
 			Destroy(gameObject);
 		}
