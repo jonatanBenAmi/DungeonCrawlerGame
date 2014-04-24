@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 439.30545, y: 5.19163132, z: 378.186096}
+  m_LocalPosition: {x: 89.612175, y: 6.06006241, z: 14.5560904}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 9a3eb14fc971cac4db6870bd5c1a048c, type: 2}
+  - {fileID: 2100000, guid: 0d68d3df3b6ec5144ad48a0001278357, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -78,11 +78,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66fbc632c7d0ef44bb879c3a290c89e0, type: 3}
+  m_Script: {fileID: 11500000, guid: ce81f172ec6b0e647969b26bcc2409f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfGrenades: 5
-  grenadeChoise: 0
+  damage: 0
+  type: 0
+  throwSpeed: 0
+  grenadeSound: {fileID: 0}
+  exp: {fileID: 0}
+  fuseTimer: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
