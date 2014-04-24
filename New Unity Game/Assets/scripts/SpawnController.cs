@@ -34,7 +34,7 @@ public class SpawnController : MonoBehaviour
 		if (Time.time > spawnTimer) 
 		{
 			int randomSelection = Random.Range (1,100);
-			Debug.Log(randomSelection.ToString());
+			//Debug.Log(randomSelection.ToString());
 			if(randomSelection < 30){
 				spawnTimer = Time.time + howFast;
 				Instantiate(enemy[0], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
