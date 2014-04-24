@@ -3,7 +3,7 @@ using System.Collections;
 
 public class grenadeScript : MonoBehaviour {
 
-	public int damage;
+	public float damage;
 	public int type;
 
 	public float throwSpeed;
@@ -13,7 +13,6 @@ public class grenadeScript : MonoBehaviour {
 	public float fuseTimer;
 
 	private float stunTime;
-
 	private float timeToDeto;
 
 	void Start () 
@@ -25,6 +24,10 @@ public class grenadeScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if (type == 3)
+		{
+			transform.Rotate(Vector3.forward * 36000 * Time.deltaTime);
+		}
 		if(timeToDeto == 0)
 		{
 			Instantiate(exp, transform.position, transform.rotation);

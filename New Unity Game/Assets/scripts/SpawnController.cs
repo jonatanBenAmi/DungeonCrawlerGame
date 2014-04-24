@@ -35,11 +35,19 @@ public class SpawnController : MonoBehaviour
 		{
 			int randomSelection = Random.Range (1,100);
 			//Debug.Log(randomSelection.ToString());
-			if(randomSelection < 30){
+			if(randomSelection < 30)
+			{
 				spawnTimer = Time.time + howFast;
 				Instantiate(enemy[0], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
 				maxEnemies ++;//as GameObject;
-			}else{
+			}
+			else if (randomSelection >=30 && randomSelection < 40)
+			{
+				spawnTimer = Time.time + howFast;
+				Instantiate(enemy[2], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
+				maxEnemies ++;//as GameObject;
+			}
+			else{
 				spawnTimer = Time.time + howFast;
 				Instantiate(enemy[1], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
 				maxEnemies ++;//as GameObject;

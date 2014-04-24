@@ -50,8 +50,8 @@ public class Controls : MonoBehaviour {
 		bulletChoise = 0;
 		grenadeChoise = 0;
 
-		bulletsLeft = new int[5]{0,0,0,0,0};
-		grenadesLeft = new int[6]{0,0,0,0,0,0};
+		bulletsLeft = new int[5]{10,10,10,10,10};
+		grenadesLeft = new int[6]{10,10,10,10,10,10};
 
 		checkPoint = transform.position;
 

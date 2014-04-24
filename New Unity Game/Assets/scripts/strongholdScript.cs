@@ -3,7 +3,7 @@ using System.Collections;
 
 public class strongholdScript : MonoBehaviour {
 
-	public int defence;
+	public float defence;
 	public GameObject player;
 	public GameObject exp;
 

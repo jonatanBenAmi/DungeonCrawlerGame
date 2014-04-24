@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 148.301392, y: 9.13038158, z: 99.5052032}
+  m_LocalPosition: {x: 76.4637375, y: 4.84172916, z: 60.3085976}
   m_LocalScale: {x: .347344786, y: .341637433, z: .347344786}
   m_Children:
   - {fileID: 400004}
@@ -242,7 +242,7 @@ Light:
   m_Color: {r: .977941155, g: .888478398, b: .38830018, a: 1}
   m_Intensity: 6
   m_Range: 30
-  m_SpotAngle: 120
+  m_SpotAngle: 179
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -277,7 +277,7 @@ Light:
   m_Color: {r: 1, g: .870860875, b: .244431227, a: 1}
   m_Intensity: 6
   m_Range: 30
-  m_SpotAngle: 120
+  m_SpotAngle: 179
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -311,9 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f7569e2eca58548b3f443852855085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 3
   type: 3
-  throwSpeed: 20
+  throwSpeed: 30
   grenadeSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
   exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
   fuseTimer: 10

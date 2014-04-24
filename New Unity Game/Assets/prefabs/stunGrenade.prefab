@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   type: 4
-  throwSpeed: 20
+  throwSpeed: 30
   grenadeSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
   exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
   fuseTimer: 3

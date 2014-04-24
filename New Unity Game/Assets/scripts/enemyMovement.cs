@@ -17,9 +17,11 @@ public class enemyMovement : MonoBehaviour {
 	public float ticTime;
 	public float RandNum;
 
-	public int defence;
+	public float defence;
 	public float attack;
 	public bool stuned;
+	private float defenceBeforeStun;
+
 
 	public AudioClip MonsterSound;
 
@@ -31,6 +33,7 @@ public class enemyMovement : MonoBehaviour {
 		MinDist = 0;
 		ticTime = 0.0f;
 		stuned = false;
+		defenceBeforeStun = 0;
 		myTransform = transform;
 	}
 
@@ -42,6 +45,8 @@ public class enemyMovement : MonoBehaviour {
 			ticTime = 0;
 			timeToTurn = 500.0f;
 			if(stuned == true){
+				defence = defenceBeforeStun;
+				defenceBeforeStun = 0;
 				stuned = false;
 			}
 		}
@@ -51,10 +56,15 @@ public class enemyMovement : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		if(stuned == true){
-
+		if(stuned == true)
+		{
 			transform.position = transform.position;
-		}else{
+			if(defenceBeforeStun == 0){
+				defenceBeforeStun = defence;
+				defence = defence * 0.30f;
+			}
+		}
+		else{
 			Distance = Vector3.Distance (myTransform.position,Target.transform.position);
 			if(Distance < 30)
 			{
@@ -75,7 +85,6 @@ public class enemyMovement : MonoBehaviour {
 		}
 		if(transform.position.y < 5|| transform.position.y > 6){
 			transform.position = new Vector3 (transform.position.x,  5.5f,transform.position.z);
-			Debug.Log("enemy moved up");
 		}
 
 	}
@@ -96,7 +105,8 @@ public class enemyMovement : MonoBehaviour {
 		else if(other.tag == "Terrain"){
 			transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 			transform.Rotate (new Vector3 (0, 150, 0));
-		}else if(other.tag == "Boundery"){
+		}
+		else if(other.tag == "Boundery"){
 			transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 			transform.Rotate (new Vector3 (0, 150, 0));
 		}
