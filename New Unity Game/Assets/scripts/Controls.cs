@@ -114,16 +114,24 @@ public class Controls : MonoBehaviour {
 
 		if(Input.GetAxis("Mouse ScrollWheel") != 0)
 		{
-			bulletChoise += (int)Input.GetAxisRaw("Mouse ScrollWheel") ;
+			bulletChoise += (int)Input.GetAxisRaw("Mouse ScrollWheel");
 			if(bulletChoise > bulletsLeft.Length - 1){
 		    	bulletChoise = 0;
 			}else if (bulletChoise < 0){
 				bulletChoise = bulletsLeft.Length - 1;
 			}
-		}else if(Input.GetKeyDown(KeyCode.Alpha2)){
-			if(++grenadeChoise > grenadesLeft.Length - 1){
+		}else if(Input.GetKeyDown(KeyCode.Alpha1)){
 				grenadeChoise = 0;
-			}
+		}else if(Input.GetKeyDown(KeyCode.Alpha2)){
+			grenadeChoise = 1;
+		}else if(Input.GetKeyDown(KeyCode.Alpha3)){
+			grenadeChoise = 2;
+		}else if(Input.GetKeyDown(KeyCode.Alpha4)){
+			grenadeChoise = 3;
+		}else if(Input.GetKeyDown(KeyCode.Alpha5)){
+			grenadeChoise = 4;
+		}else if(Input.GetKeyDown(KeyCode.Alpha6)){
+			grenadeChoise = 5;
 		}
 				
 		//movement
