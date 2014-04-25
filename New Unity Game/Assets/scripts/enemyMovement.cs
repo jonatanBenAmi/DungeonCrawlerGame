@@ -68,7 +68,11 @@ public class enemyMovement : MonoBehaviour {
 				defence = defence * 0.30f;
 			}
 		}else{
-			Distance = Vector3.Distance (myTransform.position,Target.position);
+			if(Target.position != null){
+				Distance = Vector3.Distance (myTransform.position,Target.position);
+			}else{
+				Target = player.transform;
+			}
 			if(Distance < 30)
 			{
 				audio.volume = 0.3f;

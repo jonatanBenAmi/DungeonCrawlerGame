@@ -4,12 +4,14 @@ using System.Collections;
 public class strongholdScript : MonoBehaviour {
 
 	public float defence;
+	public GameObject spawn;
 	public GameObject player;
 	public GameObject exp;
 
 	void Start () {
 		defence = 50;
 		player = GameObject.Find("Avatar");
+		spawn = transform.FindChild("Spawn").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,7 @@ public class strongholdScript : MonoBehaviour {
 			Controls script = player.GetComponent<Controls>();
 			script.checkPoint = player.transform.position;
 			Destroy(gameObject);
+			Destroy(spawn);
 		}
 	}
 	void OnTriggerEnter(Collider other)

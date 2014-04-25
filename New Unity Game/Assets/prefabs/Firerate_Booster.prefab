@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: FireRate
+  m_Name: Firerate_Booster
   m_TagString: Booster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.0435982, y: 6.00009155, z: 52.9212418}
+  m_LocalPosition: {x: 162.53598, y: 6.05326462, z: 234.051285}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63addadad73144c43b420112d00c7af1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0748f0a3238123a47b81380004c9eb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   increaseFirerate: 0
