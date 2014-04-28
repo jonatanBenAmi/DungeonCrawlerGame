@@ -165,7 +165,7 @@ public class Player_Charactor : Charactor_Class
 		int tmpDef = (int)defence;
 		int tmpArm = (int)armorStrength;
 
-		GUI.TextField(new Rect(Screen.width/2 - 40,Screen.height - 40,80,40), "Health: " + tmpDef.ToString() + "\nArmor: " + tmpArm.ToString());
+		GUI.TextField(new Rect(Screen.width/2 - 60,Screen.height - 50,120,50), "Health: " + tmpDef.ToString() + "\nArmor: " + tmpArm.ToString() + "\nEnemy Kills: " + enemyKills.ToString());
 
 		GUI.TextField(new Rect(Screen.width - 160,80,160,110),	grenade[grenadeChoise - 1].name + ": \n" +
 		              grenadeStock[grenadeChoise - 1] + "x ");
@@ -196,5 +196,10 @@ public class Player_Charactor : Charactor_Class
 	{
 		get {return checkPoint;}
 		set {checkPoint = value; }
+	}
+	public int EnemyKills
+	{
+		get {return enemyKills;}
+		set {enemyKills = value;}
 	}
 }

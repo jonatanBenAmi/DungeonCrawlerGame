@@ -9,13 +9,13 @@ public class ammoBoosterScript : MonoBehaviour {
 	void Start()
 	{
 		amountOfBullets = new int[4];
-		int randomSelection = Random.Range (30,60);
+		int randomSelection = Random.Range (150,200);
 		amountOfBullets[0] = randomSelection;
-		randomSelection = Random.Range (15,45);
+		randomSelection = Random.Range (100,145);
 		amountOfBullets[1] = randomSelection;
 		randomSelection = Random.Range (15,45);
 		amountOfBullets[2] = randomSelection;
-		randomSelection = Random.Range (5,15);
+		randomSelection = Random.Range (15,45);
 		amountOfBullets[3] = randomSelection;
 
 		transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);

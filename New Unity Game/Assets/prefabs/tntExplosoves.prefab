@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf544ba743344c40bcef0e495dd2d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  fuseTime: 500
+  damage: 75
+  fuseTime: 400
   throwSpeed: 5
   explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
   explosionSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}

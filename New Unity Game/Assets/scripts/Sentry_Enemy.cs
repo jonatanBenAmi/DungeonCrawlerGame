@@ -6,9 +6,7 @@ public class Sentry_Enemy : Enemy_Charactor {
 	
 	public override void Start () 
 	{
-		GameObject player = GameObject.Find("Avatar");
-		
-		target = player.transform;
+
 		movementSpeed = 7.0f;
 		defence = 20.0f;
 		armorStrength = 0.0f;
@@ -22,9 +20,16 @@ public class Sentry_Enemy : Enemy_Charactor {
 	
 	public override void Update () 
 	{
+		GameObject player = GameObject.Find("Avatar");
+		
+		target = player.transform;
+
 		Enemy_Weapon script = gameObject.GetComponent<Enemy_Weapon>();
+		Player_Charactor charScript = player.GetComponent<Player_Charactor>();
+
 		if(defence < 1)
 		{
+			charScript.EnemyKills++;
 			Instantiate(explosionGraphics, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}

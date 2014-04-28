@@ -6,7 +6,7 @@ public class grenadeBooster : MonoBehaviour {
 	public int[] amountOfGrenades;
 
 	void Start () {
-		amountOfGrenades = new int[5] {5,5,5,5,5};
+		amountOfGrenades = new int[5] {20,10,10,10,10};
 		transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);
 	}
 

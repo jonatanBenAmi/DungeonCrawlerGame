@@ -22,9 +22,15 @@ public class Guard_Enemy : Enemy_Charactor {
 	public override void Update () 
 	{
 
+		GameObject player = GameObject.Find("Avatar");
+		
+		target = player.transform;
+
+		Player_Charactor charScript = player.GetComponent<Player_Charactor>();
 		
 		if(defence < 1)
 		{
+			charScript.EnemyKills++;
 			Instantiate(explosionGraphics, transform.position, transform.rotation);
 			Destroy (gameObject);
 		}

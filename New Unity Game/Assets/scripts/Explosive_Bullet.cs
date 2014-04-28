@@ -87,6 +87,18 @@ public class Explosive_Bullet : Bullet_Class {
 				penetrationPower = 0;
 			}
 		}
+		else if(other.tag == "SpawnPoint")
+		{
+			if(expandAttack == true)
+			{
+				collisionObject = other.gameObject;
+				strongholdScript script = collisionObject.GetComponent<strongholdScript>();
+
+				script.defence -= damage;
+
+				penetrationPower = 0;
+			}
+		}
 	}
 	
 	public override void OnCollisionEnter(Collision col)
