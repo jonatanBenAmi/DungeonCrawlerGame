@@ -50,7 +50,7 @@ public class Standart_Bullet : Bullet_Class
 				}
 			}
 		}
-		if(other.tag == "Avatar")
+		if(other.tag == "Player")
 		{
 			penetrationPower--;
 			Charactor_Class script = collisionObject.GetComponent<Charactor_Class>();

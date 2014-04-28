@@ -109,14 +109,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daedf7ce9d05e5241a71107a06212530, type: 3}
+  m_Script: {fileID: 11500000, guid: a9c9304292917ab438d91544c3dee1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  penatration: 3
-  typeOfBullet: 4
-  speed: 60
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

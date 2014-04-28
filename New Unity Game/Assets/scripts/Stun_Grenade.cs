@@ -27,10 +27,18 @@ public class Stun_Grenade : Grenade_Class
 			if(other.tag == "Enemy" )
 			{
 				collisionObject = other.gameObject;
-				enemyMovement script = collisionObject.GetComponent<enemyMovement>();
-				script.stuned = true;
-				script.enemyTimer.TimeToNextTick = 1000.0f;
-				script.enemyTimer.TimeToNextTick = 0.0f;
+				Charactor_Class script = collisionObject.GetComponent<Charactor_Class>();
+				script.Stuned = true;
+				script.charactorTimer.TimeToNextTick = 1000.0f;
+				script.charactorTimer.TimeTicking = 0.0f;
+			}
+			if(other.tag == "Player" )
+			{
+				collisionObject = other.gameObject;
+				Charactor_Class script = collisionObject.GetComponent<Charactor_Class>();
+				script.Stuned = true;
+				script.charactorTimer.TimeToNextTick = 200.0f;
+				script.charactorTimer.TimeTicking = 0.0f;
 			}
 		}
 	}

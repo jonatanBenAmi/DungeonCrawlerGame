@@ -5,8 +5,10 @@ public class explosivesBooster : MonoBehaviour {
 
 	public int amountOfExplosives;
 	
-	void Start () {
+	void Start () 
+	{
 		amountOfExplosives = 5;
+		transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);
 	}
 	
 	void OnTriggerEnter(Collider other)
@@ -15,8 +17,8 @@ public class explosivesBooster : MonoBehaviour {
 		if(other.gameObject.name == "Avatar") 
 		{
 			collisionObject = other.gameObject;
-			Controls script = collisionObject.GetComponent<Controls>();
-			script.grenadesLeft[5] +=  amountOfExplosives;
+			Player_Charactor script = collisionObject.GetComponent<Player_Charactor>();
+			script.grenadeStock[5] += amountOfExplosives;
 			Destroy(gameObject);
 		}
 	}

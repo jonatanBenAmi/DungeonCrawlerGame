@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 156.287949, y: 4.66238451, z: 112.094086}
+  m_LocalPosition: {x: 167.774475, y: 4.66238451, z: 477.488861}
   m_LocalScale: {x: .470332861, y: .324585766, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,15 +95,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69f7569e2eca58548b3f443852855085, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bf544ba743344c40bcef0e495dd2d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
-  type: 5
+  damage: 50
+  fuseTime: 500
   throwSpeed: 5
-  grenadeSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
-  fuseTimer: 6
+  explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  explosionSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

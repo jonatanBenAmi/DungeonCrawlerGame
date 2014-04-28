@@ -3,11 +3,14 @@ using System.Collections;
 
 public class healthBooster : MonoBehaviour {
 
-	public int lifeIncrease;
+	private float defenceIncrease;
+	private int liveIncrease;
 
 	void Start()
 	{
-		lifeIncrease = 1;
+		defenceIncrease = 100.0f;
+		liveIncrease = 1;
+		transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);
 	}
 	void OnTriggerEnter(Collider other)
 	{  
@@ -18,8 +21,9 @@ public class healthBooster : MonoBehaviour {
 		{
 			collisionObject = other.gameObject;
 			
-			Controls script = collisionObject.GetComponent<Controls>();
-			script.life += lifeIncrease;
+			Player_Charactor script = collisionObject.GetComponent<Player_Charactor>();
+			script.defence = defenceIncrease;
+			script.Lives = liveIncrease;
 			Destroy(gameObject);
 		}
 	}

@@ -24,19 +24,17 @@ public class Standart_Grenade : Grenade_Class
 
 		if(explode == true)
 		{
-			if(other.tag == "Player")
+			if(other.tag == "Player" || other.tag == "Enemy" )
 			{	
 				collisionObject = other.gameObject;
-				Controls script = collisionObject.GetComponent<Controls>();
-				script.health -= damage;
-			}
-			else if(other.tag == "Enemy" )
-			{
-				collisionObject = other.gameObject;
-				enemyMovement script = collisionObject.GetComponent<enemyMovement>();
+				Charactor_Class script = collisionObject.GetComponent<Charactor_Class>();
+				if(script.armorStrength > 0)
+				{
+					script.armorStrength -= damage;
+				}
 				script.defence -= damage;
-				
 			}
+	
 			else if(other.tag == "SpawnPoint" )
 			{
 				collisionObject = other.gameObject;

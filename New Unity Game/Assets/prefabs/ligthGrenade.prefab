@@ -33,7 +33,7 @@ GameObject:
   - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: ligthGrenade
-  m_TagString: Untagged
+  m_TagString: Grenade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.4637375, y: 4.84172916, z: 60.3085976}
+  m_LocalPosition: {x: 214.445343, y: 4.03326893, z: 430.927032}
   m_LocalScale: {x: .347344786, y: .341637433, z: .347344786}
   m_Children:
   - {fileID: 400004}
@@ -308,15 +308,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69f7569e2eca58548b3f443852855085, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f43c661638516c4cb06ebb208e3cb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  type: 3
-  throwSpeed: 30
-  grenadeSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
-  fuseTimer: 10
+  damage: 6
+  fuseTime: 800
+  throwSpeed: 25
+  explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  explosionSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

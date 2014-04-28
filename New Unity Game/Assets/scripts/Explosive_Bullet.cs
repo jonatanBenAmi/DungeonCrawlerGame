@@ -67,7 +67,7 @@ public class Explosive_Bullet : Bullet_Class {
 				penetrationPower = 0;
 			}
 		}
-		else if(other.tag == "Avatar")
+		else if(other.tag == "Player")
 		{
 			if(expandAttack == true)
 			{

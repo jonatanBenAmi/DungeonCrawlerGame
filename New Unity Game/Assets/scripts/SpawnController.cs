@@ -10,7 +10,7 @@ public class SpawnController : MonoBehaviour
 	public float spawnTimer;
 	public float howFast;
 	public int maxEnemies;
-
+	public int spawnNumber;
 
 	void Start () 
 	{
@@ -18,39 +18,47 @@ public class SpawnController : MonoBehaviour
 		howFast = 10.0f;
 		maxEnemies = 0;
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		if(maxEnemies > 5){
-			howFast = 20.0f;
-		}else if(maxEnemies > 10){
-			howFast = 40.0f;
-		}else if(maxEnemies > 25){
-			howFast = 60.0f;
-		}
+		GameObject player = GameObject.Find("Avatar");
+		Player_Charactor script = player.GetComponent<Player_Charactor>();
+		int playerPoint = script.CheckPointCount;
 
 
-		if (Time.time > spawnTimer) 
+		if(spawnNumber - 3 < playerPoint)
 		{
-			int randomSelection = Random.Range (1,100);
-			//Debug.Log(randomSelection.ToString());
-			if(randomSelection < 30)
-			{
-				spawnTimer = Time.time + howFast;
-				Instantiate(enemy[0], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
-				maxEnemies ++;//as GameObject;
+			if(maxEnemies > 5){
+				howFast = 20.0f;
+			}else if(maxEnemies > 10){
+				howFast = 40.0f;
+			}else if(maxEnemies < 25){
+				howFast = 80.0f;
 			}
-			else if (randomSelection >=30 && randomSelection < 40)
+
+
+			if (Time.time > spawnTimer) 
 			{
-				spawnTimer = Time.time + howFast;
-				Instantiate(enemy[2], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
-				maxEnemies ++;//as GameObject;
-			}
-			else{
-				spawnTimer = Time.time + howFast;
-				Instantiate(enemy[1], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
-				maxEnemies ++;//as GameObject;
+				int randomSelection = Random.Range (1,100);
+				//Debug.Log(randomSelection.ToString());
+				if(randomSelection < 10)
+				{
+					spawnTimer = Time.time + howFast;
+					Instantiate(enemy[0], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
+					maxEnemies ++;//as GameObject;
+				}
+				else if (randomSelection >=10 && randomSelection < 30)
+				{
+					spawnTimer = Time.time + howFast;
+					Instantiate(enemy[1], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
+					maxEnemies ++;//as GameObject;
+				}
+				else{
+					spawnTimer = Time.time + howFast;
+					Instantiate(enemy[2], new Vector3 (transform.position.x,5,transform.position.z),transform.rotation);
+					maxEnemies ++;//as GameObject;
+				}
 			}
 		}
 	}

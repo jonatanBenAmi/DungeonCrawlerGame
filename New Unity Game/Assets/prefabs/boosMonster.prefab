@@ -147,9 +147,25 @@ GameObject:
   - 54: {fileID: 5400000}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: boosMonster
   m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400018}
+  m_Layer: 0
+  m_Name: shotSpawn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,11 +272,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.056366, y: 3.69163156, z: 194.617065}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 76.9877243, y: 4.50009155, z: 57.2754402}
+  m_LocalScale: {x: 1.54754114, y: 1.54754114, z: 1.54754114}
   m_Children:
   - {fileID: 400014}
+  - {fileID: 400018}
   m_Father: {fileID: 0}
+--- !u!4 &400018
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0669396818, y: 1.12259459, z: 1.45749104}
+  m_LocalScale: {x: .646186352, y: .646186352, z: .646186352}
+  m_Children: []
+  m_Father: {fileID: 400016}
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -480,7 +508,7 @@ AudioSource:
   m_GameObject: {fileID: 100016}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0f118a885fbbe454ab25280c9f79f12d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -552,19 +580,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 100016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4497ce976c1394c89eca35a432790d, type: 3}
+  m_Script: {fileID: 11500000, guid: d2160b24b1fffbe4686e87dcd5e2719b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
-  MoveSpeed: 5
-  MinDist: 0
-  timeToTurn: 0
-  ticTime: 0
-  RandNum: 0
-  defence: 50
-  attack: 20
-  stuned: 0
-  MonsterSound: {fileID: 8300000, guid: 0f118a885fbbe454ab25280c9f79f12d, type: 3}
+  movementSpeed: 0
+  defence: 0
+  armorStrength: 0
+  explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  sentrySound: {fileID: 8300000, guid: 0f118a885fbbe454ab25280c9f79f12d, type: 3}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7ff35f95011494bbfdd5123449a11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 300
+  barrelEnd: {fileID: 400018}
+  ammunitionType:
+  - {fileID: 100002, guid: 019b88d8783d23a45b13457f83c384e4, type: 2}
+  ammunitionStock: 10270000
+  ammunitionGui: []
+  gunFire: {fileID: 8300000, guid: ae1c6a792ba6a124c82c91bb3dff77a7, type: 3}
+  openFire: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

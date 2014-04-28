@@ -10,6 +10,7 @@ public class Enemy_Charactor : Charactor_Class
 	protected Transform target;
 	protected bool timerTick;
 	protected float tmpDefence;
+	protected float contactAttack;
 
 
 	public virtual void Start () 
@@ -27,5 +28,10 @@ public class Enemy_Charactor : Charactor_Class
 	public Transform Target
 	{
 		set {target = value;}
+	}
+	public float ContactAttack
+	{
+		get {return contactAttack;}
+		set {contactAttack = value;}
 	}
 }

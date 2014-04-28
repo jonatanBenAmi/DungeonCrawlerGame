@@ -15,6 +15,7 @@ public class Boss_Enemy : Enemy_Charactor
 		stuned = false;
 		affectTimer = 0f;
 		timerTick = false;
+		contactAttack = 20.0f;
 		
 		charactorTimer = new Event_Timer(affectTimer, true);
 	}
@@ -50,7 +51,12 @@ public class Boss_Enemy : Enemy_Charactor
 		{
 			distanceToTarget = Vector3.Distance (transform.position,target.position);
 			
-			if(distanceToTarget < 30)
+			if(timerTick)
+			{
+				Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
+				transform.Rotate (randomDirection);
+			}
+			if(distanceToTarget > 6 && distanceToTarget < 30)
 			{
 				audio.volume = 0.3f;
 				audio.PlayOneShot(sentrySound);
@@ -58,28 +64,22 @@ public class Boss_Enemy : Enemy_Charactor
 				transform.position += transform.forward*movementSpeed*Time.deltaTime;
 				script.openFire = true;
 			}
-			else if(distanceToTarget < 6)
+			else if(distanceToTarget <= 6)
 			{
 				audio.PlayOneShot(sentrySound);
-				transform.position += transform.forward*(movementSpeed/10)*Time.deltaTime;
+				transform.position = transform.position;
 				transform.LookAt (target);
-				script.openFire = true;
 			}
-			else
+			else 
 			{
-				script.openFire = false;
 				transform.position += transform.forward*movementSpeed*Time.deltaTime;
-				if(timerTick){
-					Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
-					transform.Rotate (randomDirection);
-				}
+				script.openFire = false;
 			}
 		}
 		if(transform.position.y < 4|| transform.position.y > 6){
 			transform.position = new Vector3 (transform.position.x, 5f,transform.position.z);
 		}
-		
-		Debug.Log(defence);
+
 	}
 	public void OnTriggerEnter(Collider other) 
 	{

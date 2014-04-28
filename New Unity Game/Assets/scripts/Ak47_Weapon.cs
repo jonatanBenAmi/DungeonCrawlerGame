@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Ak47_Weapon : Weapons_Class 
 {
+	public Event_Timer boosterTimer;
 
 	public override void Start()
 	{
 		weaponTimer = new Event_Timer(rateOfFire,true);
+		boosterTimer = new Event_Timer(rateOfFire,false);
 		ammunitionChoise = 0;
 		ammunitionStock = new int[4]{100,100,100,100};
 	}
@@ -15,6 +17,12 @@ public class Ak47_Weapon : Weapons_Class
 		if (weaponTimer.eventTimer())
 		{
 			triggerTick = true;
+
+		}
+		if (boosterTimer.eventTimer())
+		{
+			rateOfFire = 10f;
+			boosterTimer.TimerIsOn = false;
 		}
 		if (Input.GetButton ("Fire1")) 
 		{
@@ -45,5 +53,10 @@ public class Ak47_Weapon : Weapons_Class
 			Instantiate(ammunitionType[ammunitionChoise], barrelEnd.position, barrelEnd.rotation);
 		}
 	}
-
+	void OnGUI()
+	{ 
+		GUI.TextField(new Rect(Screen.width - 160,0,160,80),	ammunitionType[ammunitionChoise].name + ": \n" +
+		              ammunitionStock[ ammunitionChoise] + "x ");
+		GUI.DrawTexture(new Rect(Screen.width - 150,36,140,26),ammunitionGui[ammunitionChoise]);
+	}
 }

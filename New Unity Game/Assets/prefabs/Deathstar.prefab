@@ -697,19 +697,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4497ce976c1394c89eca35a432790d, type: 3}
+  m_Script: {fileID: 11500000, guid: e3b9bac7d6583574892925eb772ffee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
-  MoveSpeed: 8
-  MinDist: 0
-  timeToTurn: 0
-  ticTime: 0
-  RandNum: 0
+  movementSpeed: 0
   defence: 25
-  attack: 15
-  stuned: 0
-  MonsterSound: {fileID: 8300000, guid: 0f118a885fbbe454ab25280c9f79f12d, type: 3}
+  armorStrength: 0
+  explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
+  sentrySound: {fileID: 8300000, guid: 0f118a885fbbe454ab25280c9f79f12d, type: 3}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

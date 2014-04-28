@@ -4,33 +4,28 @@ using System.Collections;
 public class strongholdScript : MonoBehaviour {
 
 	public float defence;
-	public GameObject spawn;
-	public GameObject player;
+	private GameObject spawn;
+	private GameObject player;
 	public GameObject exp;
 
-	void Start () {
-		defence = 50;
+	void Start () 
+	{
 		player = GameObject.Find("Avatar");
 		spawn = transform.FindChild("Spawn").gameObject;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(defence < 0){
+	void Update () 
+	{
+		if(defence < 1){
 			Instantiate(exp, transform.position, transform.rotation);
-			Controls script = player.GetComponent<Controls>();
-			script.checkPoint = player.transform.position;
+			Player_Charactor script = player.GetComponent<Player_Charactor>();
+			script.CheckPoint = player.transform.position;
+			script.CheckPointCount++;
 			Destroy(gameObject);
 			Destroy(spawn);
 		}
+
 	}
-	void OnTriggerEnter(Collider other)
-	{  
-		if(other.tag == "Bullet"){
-			defence--;
-			Instantiate(exp, transform.position, transform.rotation);
-			Destroy(other.gameObject); //this will destroy the bullet
-			//this will destoy the enemy  //ends execution of function and return control back to unities game loop
-		}
-	}
+
 }

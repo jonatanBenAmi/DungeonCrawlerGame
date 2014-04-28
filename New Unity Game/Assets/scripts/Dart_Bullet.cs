@@ -43,7 +43,7 @@ public class Dart_Bullet : Bullet_Class {
 				script.defence -= damage;
 			}
 		}
-		if(other.tag == "Avatar")
+		if(other.tag == "Player")
 		{
 			penetrationPower--;
 			collisionObject = other.gameObject;

@@ -40,7 +40,7 @@ public class Heavy_Bullet : Bullet_Class {
 				script.defence -= damage;
 			}
 		}
-		if(other.tag == "Avatar")
+		if(other.tag == "Player")
 		{
 			penetrationPower--;
 			collisionObject = other.gameObject;

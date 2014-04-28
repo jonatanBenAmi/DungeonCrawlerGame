@@ -39,6 +39,7 @@ public class Event_Timer {
 	}
 	public float TimeTicking
 	{
+		get {return timeTicking;}
 		set {timeTicking = value;}
 	}
 	public bool TimerIsOn

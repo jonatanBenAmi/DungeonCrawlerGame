@@ -5,7 +5,7 @@ using System.Collections;
 public class Charactor_Class : MonoBehaviour 
 {
 
-	protected Event_Timer charactorTimer;
+	public Event_Timer charactorTimer;
 
 	public float movementSpeed;
 	public float defence;
@@ -22,5 +22,10 @@ public class Charactor_Class : MonoBehaviour
 	public virtual void Update () 
 	{
 	
+	}
+	public bool Stuned
+	{
+		get {return stuned;}
+		set {stuned = value;}
 	}
 }
