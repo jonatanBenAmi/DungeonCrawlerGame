@@ -24,6 +24,8 @@ public class Light_Grenade : Grenade_Class {
 	{
 		GameObject collisionObject;
 
+		GameObject player = GameObject.Find("Avatar");
+
 		if(other.tag == "Enemy" )
 		{
 			collisionObject = other.gameObject;
@@ -34,7 +36,6 @@ public class Light_Grenade : Grenade_Class {
 		{
 			if(other.tag == "Enemy" )
 			{
-				GameObject player = GameObject.Find("Avatar");
 				collisionObject = other.gameObject;
 				Enemy_Charactor script = collisionObject.GetComponent<Enemy_Charactor>();
 				script.Target = player.transform;

@@ -15,8 +15,9 @@ public class SpawnController : MonoBehaviour
 	void Start () 
 	{
 		spawnTimer = 0.0f;
-		howFast = 10.0f;
+		howFast = 5.0f;
 		maxEnemies = 0;
+
 	}
 
 	// Update is called once per frame
@@ -26,22 +27,21 @@ public class SpawnController : MonoBehaviour
 		Player_Charactor script = player.GetComponent<Player_Charactor>();
 		int playerPoint = script.CheckPointCount;
 
+		if(maxEnemies > 5){
+			howFast = 15.0f;
+		}else if(maxEnemies > 10){
+			howFast = 30.0f;
+		}else if(maxEnemies > 25 && maxEnemies < 40){
+			howFast = 60.0f;
+		}
 
-		if(spawnNumber - 3 < playerPoint)
+		if(spawnNumber - 5 < playerPoint)
 		{
-			if(maxEnemies > 5){
-				howFast = 20.0f;
-			}else if(maxEnemies > 10){
-				howFast = 40.0f;
-			}else if(maxEnemies < 25){
-				howFast = 80.0f;
-			}
-
-
 			if (Time.time > spawnTimer) 
 			{
+				Debug.Log(spawnNumber);
 				int randomSelection = Random.Range (1,100);
-				//Debug.Log(randomSelection.ToString());
+
 				if(randomSelection < 10)
 				{
 					spawnTimer = Time.time + howFast;

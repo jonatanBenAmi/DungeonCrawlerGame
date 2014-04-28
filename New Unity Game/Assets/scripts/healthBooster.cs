@@ -23,7 +23,7 @@ public class healthBooster : MonoBehaviour {
 			
 			Player_Charactor script = collisionObject.GetComponent<Player_Charactor>();
 			script.defence = defenceIncrease;
-			script.Lives = liveIncrease;
+			script.Lives += liveIncrease;
 			Destroy(gameObject);
 		}
 	}

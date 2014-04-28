@@ -63,6 +63,10 @@ public class Player_Charactor : Charactor_Class
 		{
 			stuned = false;
 		}
+		if(armorStrength < 0)
+		{
+			armorStrength = 0;
+		}
 		if(lives < 1)
 		{   // if my health is 0, then restart the game
 			Application.LoadLevel(0);
@@ -158,7 +162,10 @@ public class Player_Charactor : Charactor_Class
 	}
 	void OnGUI()
 	{
-		GUI.TextField(new Rect(Screen.width/2 - 40,Screen.height - 40,80,40), "Health: " + defence.ToString() + "\nArmor: " + armorStrength.ToString());
+		int tmpDef = (int)defence;
+		int tmpArm = (int)armorStrength;
+
+		GUI.TextField(new Rect(Screen.width/2 - 40,Screen.height - 40,80,40), "Health: " + tmpDef.ToString() + "\nArmor: " + tmpArm.ToString());
 
 		GUI.TextField(new Rect(Screen.width - 160,80,160,110),	grenade[grenadeChoise - 1].name + ": \n" +
 		              grenadeStock[grenadeChoise - 1] + "x ");
@@ -177,6 +184,7 @@ public class Player_Charactor : Charactor_Class
 	}
 	public int Lives
 	{
+		get {return lives;}
 		set {lives = value; }
 	}
 	public int CheckPointCount

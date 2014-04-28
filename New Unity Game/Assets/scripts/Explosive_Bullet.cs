@@ -116,6 +116,10 @@ public class Explosive_Bullet : Bullet_Class {
 				penetrationPower = 0;
 			}
 		}
+		else if(col.gameObject.tag == "Bullet")
+		{
+			penetrationPower--;
+		}
 	}
 
 }

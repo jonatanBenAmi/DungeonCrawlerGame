@@ -49,8 +49,7 @@ public class Heavy_Bullet : Bullet_Class {
 			
 			if(isArmored)
 			{
-				script.armorStrength -= 3 * damage;
-				script.defence -= damage;
+				script.armorStrength -= damage;
 			}
 			else
 			{
@@ -66,6 +65,10 @@ public class Heavy_Bullet : Bullet_Class {
 			penetrationPower = 0;
 		}
 		else if(col.gameObject.tag == "SpawnPoint"){
+			penetrationPower = 0;
+		}
+		else if(col.gameObject.tag == "Bullet")
+		{
 			penetrationPower = 0;
 		}
 	}
