@@ -29,6 +29,7 @@ public class Player_Charactor : Charactor_Class
 	private bool grenadeTick;
 
 	CharacterController cc;
+	bool paused;
 
 	public override void Start () 
 	{
@@ -48,6 +49,7 @@ public class Player_Charactor : Charactor_Class
 		grenadeChoise = 1;
 		grenadeTimer = new Event_Timer(throwRate, true);
 
+		paused = false;
 		checkPointCount = 0;
 
 		cc = GetComponent<CharacterController>();
@@ -57,11 +59,25 @@ public class Player_Charactor : Charactor_Class
 	{
 
 
-		if(Input.GetKey(KeyCode.Q))
+		if(Input.GetKey(KeyCode.Escape))
 		{
 			Application.Quit();
 		}
-
+		if(Input.GetKey(KeyCode.P))
+		{
+			if(paused){
+				paused = false;
+			}else{
+				paused = true;
+			}
+		}
+		if(paused)
+		{
+			Time.timeScale = 0;
+		}else
+		{
+			Time.timeScale = 1;
+		}
 		if(grenadeTimer.eventTimer())
 		{
 			grenadeTick = true;
@@ -179,8 +195,11 @@ public class Player_Charactor : Charactor_Class
 		              grenadeStock[grenadeChoise - 1] + "x ");
 		GUI.DrawTexture(new Rect(Screen.width - 130,95,90,90),grenadeGui[grenadeChoise - 1]);
 
-		if(charactorTimer.TimeTicking > 0){
-			GUI.TextField(new Rect(Screen.width/2,0,80,60), "Booster " + charactorTimer.TimeTicking);
+		GameObject gun = GameObject.Find("AK_47_Model");
+		Ak47_Weapon script = gun.GetComponent<Ak47_Weapon>();
+
+		if(script.boosterTimer.TimeTicking > 0){
+			GUI.TextField(new Rect(Screen.width/2,0,80,60), "Booster " + (script.boosterTimer.TimeToNextTick - script.boosterTimer.TimeTicking));
 			GUI.DrawTexture(new Rect(Screen.width/2 + 6,20,70,30),textureGui[0]);
 		}
 		if(lives != 0){ // if the health is not zero

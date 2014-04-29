@@ -60,7 +60,7 @@ public class Sentry_Enemy : Enemy_Charactor {
 				Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
 				transform.Rotate (randomDirection);
 			}
-			if(distanceToTarget > 6 && distanceToTarget < 15)
+			if(distanceToTarget > 6 && distanceToTarget < 20)
 			{
 				audio.volume = 0.3f;
 				audio.PlayOneShot(sentrySound);

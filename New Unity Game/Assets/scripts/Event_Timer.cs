@@ -36,6 +36,7 @@ public class Event_Timer
 
 	public float TimeToNextTick
 	{
+		get {return timeToNextTick;  }
 		set {timeToNextTick = value;}
 	}
 	public float TimeTicking

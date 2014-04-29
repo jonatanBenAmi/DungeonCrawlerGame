@@ -9,7 +9,7 @@ public class firerateBooster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		increaseFirerate = 5f;
+		increaseFirerate = 8f;
 		boosterTime = 1000.0f;
 
 		transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);

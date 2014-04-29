@@ -23,7 +23,7 @@ public class Ak47_Weapon : Weapons_Class
 		}
 		if (boosterTimer.eventTimer())
 		{
-			rateOfFire = 1f;
+			rateOfFire = 15f;
 			boosterTimer.TimerIsOn = false;
 		}
 		if (Input.GetButton ("Fire1")) 
