@@ -5,7 +5,7 @@ public class SpawnController : MonoBehaviour
 {
 	
 
-	public GameObject[] enemy;
+	public GameObject[] enemy;//Array for the enemies
 		
 	public float spawnTimer;
 	public float howFast;
