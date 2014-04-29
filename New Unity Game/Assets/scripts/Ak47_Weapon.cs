@@ -53,6 +53,8 @@ public class Ak47_Weapon : Weapons_Class
 			audio.PlayOneShot (gunFire);
 			ammunitionStock[ ammunitionChoise]--;
 			Instantiate(ammunitionType[ammunitionChoise], barrelEnd.position, barrelEnd.rotation);
+		}else if(ammunitionStock[ammunitionChoise]==0){
+			audio.PlayOneShot (gunEmpty);
 		}
 	}
 	void OnGUI()

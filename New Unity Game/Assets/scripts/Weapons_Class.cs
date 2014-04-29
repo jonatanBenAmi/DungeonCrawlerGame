@@ -13,6 +13,7 @@ public class Weapons_Class : MonoBehaviour
 
 	public Texture[] ammunitionGui; 
 	public AudioClip gunFire;
+	public AudioClip gunEmpty;
 
 	protected bool triggerTick;
 	protected int ammunitionChoise;
