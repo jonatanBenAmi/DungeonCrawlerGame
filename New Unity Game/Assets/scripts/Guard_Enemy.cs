@@ -8,7 +8,7 @@ public class Guard_Enemy : Enemy_Charactor {
 		GameObject player = GameObject.Find("Avatar");
 		
 		target = player.transform;
-		movementSpeed = 8.0f;
+		movementSpeed = 6.0f;
 		defence = 30.0f;
 		armorStrength = 20.0f;
 		stuned = false;
@@ -61,7 +61,7 @@ public class Guard_Enemy : Enemy_Charactor {
 				Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
 				transform.Rotate (randomDirection);
 			}
-			if(distanceToTarget > 6 && distanceToTarget < 30)
+			if(distanceToTarget > 6 && distanceToTarget < 18)
 			{
 				audio.volume = 0.3f;
 				audio.PlayOneShot(sentrySound);

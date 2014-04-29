@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  fuseTime: 200
+  fuseTime: 250
   throwSpeed: 25
   explosionGraphics: {fileID: 100004, guid: 169b10ce10f4327cb9f40f6b117ed8d7, type: 2}
   explosionSound: {fileID: 8300000, guid: cc7d1383078bafe45919208b674a9127, type: 3}

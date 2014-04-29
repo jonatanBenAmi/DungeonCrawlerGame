@@ -39,7 +39,6 @@ public class SpawnController : MonoBehaviour
 		{
 			if (Time.time > spawnTimer) 
 			{
-				Debug.Log(spawnNumber);
 				int randomSelection = Random.Range (1,100);
 
 				if(randomSelection < 10)

@@ -55,6 +55,13 @@ public class Player_Charactor : Charactor_Class
 
 	public override void Update () 
 	{
+
+
+		if(Input.GetKey(KeyCode.Q))
+		{
+			Application.Quit();
+		}
+
 		if(grenadeTimer.eventTimer())
 		{
 			grenadeTick = true;
@@ -70,6 +77,7 @@ public class Player_Charactor : Charactor_Class
 		if(lives < 1)
 		{   // if my health is 0, then restart the game
 			Application.LoadLevel(0);
+
 		}
 		isAlive();
 

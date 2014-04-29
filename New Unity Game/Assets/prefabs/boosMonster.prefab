@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7ff35f95011494bbfdd5123449a11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 300
+  rateOfFire: 50
   barrelEnd: {fileID: 400018}
   ammunitionType:
   - {fileID: 100002, guid: 019b88d8783d23a45b13457f83c384e4, type: 2}

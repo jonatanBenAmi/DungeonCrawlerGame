@@ -14,6 +14,8 @@ public class Ak47_Weapon : Weapons_Class
 	}
 	public override void FixedUpdate()
 	{
+
+		Debug.Log(weaponTimer.eventTimer());
 		if (weaponTimer.eventTimer())
 		{
 			triggerTick = true;
@@ -21,7 +23,7 @@ public class Ak47_Weapon : Weapons_Class
 		}
 		if (boosterTimer.eventTimer())
 		{
-			rateOfFire = 10f;
+			rateOfFire = 1f;
 			boosterTimer.TimerIsOn = false;
 		}
 		if (Input.GetButton ("Fire1")) 

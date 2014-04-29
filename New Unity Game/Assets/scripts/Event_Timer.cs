@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Event_Timer {
+public class Event_Timer 
+{
 
 	private float timeToNextTick;
 	private float timeTicking;

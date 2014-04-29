@@ -8,7 +8,7 @@ public class Sentry_Enemy : Enemy_Charactor {
 	{
 
 		movementSpeed = 7.0f;
-		defence = 20.0f;
+		defence = 15.0f;
 		armorStrength = 0.0f;
 		stuned = false;
 		affectTimer = 0f;
@@ -60,7 +60,7 @@ public class Sentry_Enemy : Enemy_Charactor {
 				Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
 				transform.Rotate (randomDirection);
 			}
-			if(distanceToTarget > 6 && distanceToTarget < 30)
+			if(distanceToTarget > 6 && distanceToTarget < 15)
 			{
 				audio.volume = 0.3f;
 				audio.PlayOneShot(sentrySound);
