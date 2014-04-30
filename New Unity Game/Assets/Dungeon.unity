@@ -5262,9 +5262,9 @@ GameObject:
   - 23: {fileID: 581282749}
   - 54: {fileID: 581282753}
   - 143: {fileID: 581282755}
-  - 114: {fileID: 581282754}
   - 82: {fileID: 581282750}
   - 136: {fileID: 581282757}
+  - 114: {fileID: 581282754}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Player
@@ -5393,9 +5393,8 @@ Rigidbody:
 --- !u!114 &581282754
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 86d3da85651a1f94eb772bc431ad3cbd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1607498008}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 581282748}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -5405,21 +5404,21 @@ MonoBehaviour:
   movementSpeed: 0
   defence: 0
   armorStrength: 0
-  weapon: {fileID: 1268866161}
+  weapon: {fileID: 100002, guid: 31a90bb0f55431c4d9cc58479f2566a2, type: 2}
   grenade:
   - {fileID: 100000, guid: 7282d21f3383fb849823c9d073080a0e, type: 2}
   - {fileID: 100000, guid: d365b2cd31b829c41b53bb0249f9ac5c, type: 2}
   - {fileID: 100000, guid: 811d34d2edb772c4dac67d1cff7e5a16, type: 2}
-  - {fileID: 100000, guid: 28a3726d15893e749ae0616dd9c3a425, type: 2}
   - {fileID: 100002, guid: 1c60bc1c27773194eaf472288d007189, type: 2}
+  - {fileID: 100000, guid: 28a3726d15893e749ae0616dd9c3a425, type: 2}
   - {fileID: 100000, guid: 67d06de409937ed478bbc727ab02fc78, type: 2}
   grenadeStock: 
   grenadeGui:
-  - {fileID: 2800000, guid: 8d6cb1a38698cd446b57f09ae57fd4af, type: 3}
+  - {fileID: 2800000, guid: 2f6b8e9256d38cc48b1eff10f80c52fc, type: 3}
   - {fileID: 2800000, guid: e07e095938b9ec840827e3cf9f7b552a, type: 3}
   - {fileID: 2800000, guid: ae182c4e5555c5f46a1d642be03e3df0, type: 3}
-  - {fileID: 2800000, guid: 18260bfda8e33754f857ff1bb9b5a377, type: 3}
   - {fileID: 2800000, guid: e9fd05d5e9da3ef43bc2ad7815bd6051, type: 3}
+  - {fileID: 2800000, guid: 18260bfda8e33754f857ff1bb9b5a377, type: 3}
   - {fileID: 2800000, guid: e00023c8b30b72940af0e405a024ce6f, type: 3}
   textureGui:
   - {fileID: 2800000, guid: 595484662036f7e41955db573eed8559, type: 3}
@@ -11662,8 +11661,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f391cbcb4365f884a9d8c199d8825e26, type: 3}
   - {fileID: 2800000, guid: cc7f58664bdb1fc4f847a08a32a6c0d1, type: 3}
   - {fileID: 2800000, guid: 51aace03437d66b458257119c859b321, type: 3}
-  gunFire: {fileID: 8300000, guid: ae1c6a792ba6a124c82c91bb3dff77a7, type: 3}
-  gunEmpty: {fileID: 8300000, guid: 9a908fe9ae376cf44ae156ea96941065, type: 3}
+  gunFire:
+  - {fileID: 8300000, guid: ae1c6a792ba6a124c82c91bb3dff77a7, type: 3}
+  - {fileID: 8300000, guid: 9a908fe9ae376cf44ae156ea96941065, type: 3}
 --- !u!82 &1268866169
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15034,6 +15034,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400004, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
+      propertyPath: gunFire.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
       propertyPath: m_LocalPosition.x
       value: 32.1826935
@@ -15070,7 +15074,16 @@ Prefab:
       propertyPath: gunEmpty
       value: 
       objectReference: {fileID: 8300000, guid: 9a908fe9ae376cf44ae156ea96941065, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 11400004, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
+      propertyPath: gunFire.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae1c6a792ba6a124c82c91bb3dff77a7, type: 3}
+    - target: {fileID: 11400004, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
+      propertyPath: gunFire.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a908fe9ae376cf44ae156ea96941065, type: 3}
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 86d3da85651a1f94eb772bc431ad3cbd, type: 2}
   m_RootGameObject: {fileID: 581282748}
   m_IsPrefabParent: 0

@@ -50,11 +50,11 @@ public class Ak47_Weapon : Weapons_Class
 	{
 		if(ammunitionStock[ammunitionChoise] > 0) //choose the ammunition type
 		{
-			audio.PlayOneShot (gunFire); //plays the gunfire sound when a shot is fired
+			audio.PlayOneShot (gunFire[0]); //plays the gunfire sound when a shot is fired
 			ammunitionStock[ ammunitionChoise]--; //when a shot is fired, you have one bullet less
 			Instantiate(ammunitionType[ammunitionChoise], barrelEnd.position, barrelEnd.rotation); //spawns the bullet from the tip of the barrel position
 		}else if(ammunitionStock[ammunitionChoise]==0){
-			audio.PlayOneShot (gunEmpty);
+			audio.PlayOneShot (gunFire[1]);
 		}
 	}
 	void OnGUI() // whole GUI function displaying the type of bullet accessed and how many bullets available
