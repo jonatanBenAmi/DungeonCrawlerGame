@@ -22,20 +22,20 @@ public class Standart_Grenade : Grenade_Class
 	{
 		GameObject collisionObject;
 
-		if(explode == true)
+		if(explode == true) //if the explode is set to true
 		{
-			if(other.tag == "Player" || other.tag == "Enemy" )
+			if(other.tag == "Player" || other.tag == "Enemy" ) //and the object object are an enemy or our avatar(selfdamage)
 			{	
-				collisionObject = other.gameObject;
-				Charactor_Class script = collisionObject.GetComponent<Charactor_Class>();
-				if(script.armorStrength > 0)
+				collisionObject = other.gameObject; //set the collision object to either the enemy or the avatar
+				Charactor_Class script = collisionObject.GetComponent<Charactor_Class>(); //add thecharactor scrpit to the current collision object
+				if(script.armorStrength > 0) //if the streng of the armor is above 0
 				{
-					script.armorStrength -= damage;
+					script.armorStrength -= damage; //do damage to the armor
 				}
-				script.defence -= damage;
+				script.defence -= damage; //but also the general health
 			}
 	
-			else if(other.tag == "SpawnPoint" )
+			else if(other.tag == "SpawnPoint" ) //the same but with here doing damage to the stronghold instead
 			{
 				collisionObject = other.gameObject;
 				strongholdScript script = collisionObject.GetComponent<strongholdScript>();
