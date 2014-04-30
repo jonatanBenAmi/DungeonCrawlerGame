@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Bullet_Class : MonoBehaviour 
 {
-	public float damage;
-	protected int penetrationPower;
-	protected float bulletVelocity;
+	public float damage; //holds the damage
+	protected int penetrationPower; //holds the penetration power
+	protected float bulletVelocity; //the velocity of the bullet
 	
 	public virtual void  Start () 
 	{
@@ -29,7 +29,7 @@ public class Bullet_Class : MonoBehaviour
 	}
 	public float BulletVelocity
 	{
-		get { return bulletVelocity;}
+		get { return bulletVelocity;}  //getting and setting the value of the bullet velocity, which will be used in the childs of bullet_class
 		set {bulletVelocity = value;}
 	}
 }
