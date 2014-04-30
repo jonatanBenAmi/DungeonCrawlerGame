@@ -3,36 +3,36 @@ using System.Collections;
 
 public class Explosive_Bullet : Bullet_Class {
 
-	public GameObject explosionGraphics;
-	private float triggerRadius;
-	private bool expandAttack;
+	public GameObject explosionGraphics; //storing the explosion in graphics
+	private float triggerRadius; //will hold the radius of the trigger
+	private bool expandAttack; // if set to true, dialate the collider of the bullet (will be used for this)
 
 	public override void Start () 
 	{
-		damage = 10.0f;
-		penetrationPower = 2;
-		bulletVelocity = 40.0f;
+		damage = 10.0f; //set damage value to ten
+		penetrationPower = 2; //set penetration power to 2
+		bulletVelocity = 40.0f;  //the velocity to 40
 
-		expandAttack = false;
-		triggerRadius = 10.0f;
+		expandAttack = false;  //stand at false, will change to true later
+		triggerRadius = 10.0f; //set the trigger radiue
 
-		rigidbody.velocity = transform.forward * bulletVelocity;
+		rigidbody.velocity = transform.forward * bulletVelocity; //moves the bullet forward arcoding to the velocity
 	}
 	
 	
 	public override void Update () 
 	{
-		if(transform.position.y > 10.0f)
+		if(transform.position.y > 10.0f) //makes sure that the bullet won't fly to hight
 		{
 			Instantiate(explosionGraphics, transform.position, transform.rotation);
 			Destroy(gameObject);
 		}
-		else if(penetrationPower < 1)
+		else if(penetrationPower < 1) //if the penetration power is under 1, also make the bullet explode
 		{
 			Instantiate(explosionGraphics, transform.position, transform.rotation);
 			Destroy(gameObject);
 		}
-		else if(expandAttack == true)
+		else if(expandAttack == true)  //will be used to make the collider expand when the bullet explodes
 		{
 			SphereCollider thisCollider = transform.GetComponent<SphereCollider>();
 			thisCollider.radius = triggerRadius;
