@@ -5,6 +5,7 @@ public class Guard_Enemy : Enemy_Charactor {
 
 	public override void Start () 
 	{
+		// giving variables values fitting for there purpose
 		GameObject player = GameObject.Find("Avatar");
 		
 		target = player.transform;
@@ -21,20 +22,21 @@ public class Guard_Enemy : Enemy_Charactor {
 	
 	public override void Update () 
 	{
-
+		// find player
 		GameObject player = GameObject.Find("Avatar");
-		
-		target = player.transform;
-
+		// find scrips for the player
 		Player_Charactor charScript = player.GetComponent<Player_Charactor>();
-		
+		// if enemy is dead
 		if(defence < 1)
 		{
+			// adds enemykills to player counter
 			charScript.EnemyKills++;
+			// explosion on position
 			Instantiate(explosionGraphics, transform.position, transform.rotation);
+			// destroy object
 			Destroy (gameObject);
 		}
-		
+		// if timer is true
 		if(charactorTimer.eventTimer())
 		{
 			timerTick = true;
@@ -42,43 +44,58 @@ public class Guard_Enemy : Enemy_Charactor {
 		
 		if(timerTick)
 		{
+			// if the enemy is stuned set it to false
 			if(stuned)
 			{
 				stuned = false;
 			}
 		}
-		
+		// if the enemy is stuned then stand still
 		if(stuned)
 		{
 			transform.position = transform.position;
 		}
+		// else
 		else
 		{
+			// calculate distance to target
 			distanceToTarget = Vector3.Distance (transform.position,target.position);
-			
+			// if timer ticks change direction
 			if(timerTick)
 			{
+				// gene
 				Vector3 randomDirection = new Vector3 (0, Random.Range (0,180), 0);
 				transform.Rotate (randomDirection);
 			}
-			if(distanceToTarget > 6 && distanceToTarget < 22)
+			// if distance is between less then 22 and greater then 2
+			if(distanceToTarget > 2 && distanceToTarget < 22)
 			{
+				// play enemy sound
 				audio.volume = 0.3f;
 				audio.PlayOneShot(sentrySound);
+				// turn to face target
 				transform.LookAt (target);
+				// move towards target
 				transform.position += transform.forward*movementSpeed*Time.deltaTime;
 			}
-			else if(distanceToTarget <= 1)
+			// if distance is less or equal to 2
+			else if(distanceToTarget <= 2)
 			{
+				// play enemy sound
 				audio.PlayOneShot(sentrySound);
+				// stand still
 				transform.position = transform.position;
+				// turn to target
 				transform.LookAt (target);
 			}
+			// if nothing else was true then do this
 			else 
 			{
+				// move
 				transform.position += transform.forward*movementSpeed*Time.deltaTime;
 			}
 		}
+		// making sure that enemy is in a height so the player can hit it
 		if(transform.position.y < 5|| transform.position.y > 7){
 			transform.position = new Vector3 (transform.position.x, 6f,transform.position.z);
 		}
@@ -86,6 +103,7 @@ public class Guard_Enemy : Enemy_Charactor {
 	}
 	public void OnTriggerEnter(Collider other) 
 	{
+		// turn 150 degress if you hit anything with these tags
 		if(other.tag == "SpawnPoint"){
 			Vector3 randomDirection = new Vector3 (0, 150, 0);
 			transform.position += transform.forward*movementSpeed*Time.deltaTime;

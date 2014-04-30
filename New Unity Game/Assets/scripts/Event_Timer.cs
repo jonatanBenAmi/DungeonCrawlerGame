@@ -4,42 +4,42 @@ using System.Collections;
 public class Event_Timer 
 {
 
-	private float timeToNextTick;
-	private float timeTicking;
-	protected bool timerIsOn;
+	private float timeToNextTick; //variable used to store how long time it should add 1, before stopping
+	private float timeTicking; //the time counter variable
+	protected bool timerIsOn; //used to evaluate is the timer is on, depending on true or false
 
-	public Event_Timer(float newTime, bool isOn)
+	public Event_Timer(float newTime, bool isOn) //starting a new time
 	{
-		timeToNextTick = newTime;
-		timeTicking = 0.0f;
-		timerIsOn = isOn;
+		timeToNextTick = newTime; //the new time is set by this value
+		timeTicking = 0.0f; //initial value
+		timerIsOn = isOn;  //and the time is on
 
 	}
 	public bool eventTimer ()
 	{
-		if(timerIsOn)
+		if(timerIsOn) //if the time in on = true
 		{
-			timeTicking++;
-			if(timeTicking == timeToNextTick)
+			timeTicking++; // add 1 to the timeTicking
+			if(timeTicking == timeToNextTick) //this is eual
 			{
-				timeTicking = 0;
+				timeTicking = 0; //stop ticking
 				return true;
 			}
 			else 
 			{
-				return false;
+				return false; //the time if off!!
 			}
 		}else{
 			return false;
 		}
 	}
 
-	public float TimeToNextTick
+	public float TimeToNextTick  //getting and setting the time
 	{
 		get {return timeToNextTick;  }
 		set {timeToNextTick = value;}
 	}
-	public float TimeTicking
+	public float TimeTicking  //as well with the timeTicking
 	{
 		get {return timeTicking;}
 		set {timeTicking = value;}
